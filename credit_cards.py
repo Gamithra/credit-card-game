@@ -94,9 +94,9 @@ def calc_score(a, b, date=False):
     score = 0
     if date:
         if a[0:2] == b[0:2]:
-            score += 2
+            score += 1
         if a[3:5] == b[3:5]:
-            score += 2
+            score += 1
     else:
         for i in range(min(len(a), len(b))):
             if a[i] != "-" or a[i] == "/":
@@ -152,7 +152,7 @@ def guess():
         print(margin + failure() + " It was " + date + ".")
 
     print("")
-    print(margin + u"\u001b[48;5;231m" + u"\u001b[38;5;16m" + " Score for this round: " + str(int((score_main + score_cvc + score_date)/22*100)) + "% " + cd)
+    print(margin + u"\u001b[48;5;231m" + u"\u001b[38;5;16m" + " Score for this round: " + str(int((score_main + score_cvc + score_date)/21*100)) + "% " + cd)
 
     print("")
     print("")
