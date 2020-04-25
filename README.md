@@ -36,4 +36,4 @@ like, for example, 5 seconds:
 
 
 
-*disclaimer: it's good practice to check that the cards owner consents to this activity. consent is important*
+*disclaimer: whenever memorizing credit card numbers, it's good practice to check that the card owner consents to the activity. consent is important*
