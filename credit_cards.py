@@ -182,6 +182,4 @@ def play():
 if __name__ ==  "__main__":
     play()
 
-    # use command line arguments to limit time
-    # command line argument that changes time
 
