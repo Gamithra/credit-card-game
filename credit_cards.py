@@ -13,6 +13,7 @@ seconds = ""
 failure_words = ["Bollocks", "Bugger", "ffs", "Shite", "Damn", "Goddammit", "Gah", "Nope", "Boo", "Dagnabbit", "For goodness' sake", "Nuh-uh", "Nah", "Negative"]
 success_words = ["Woohooo!", "No way", "PARTY!", "Hell yeah", "Well done", "Good job", "Awww yeah", "Indeed", "Hurrah", "Whoopee", "Hooray", "You're a master", "Nice", "Awesome", "Amazing", "Keep up the good work", "Keep it up"]
 names = ["John Smith", "Gamithra M.", "Donald Trump", "Foo Bar", "Jane Doe", "David", "Karl Marx", "Abe Lincoln", "Elon Musk", "Steve Jobs", "S. Wozniak", "Willy Wonka", "Bill Gates", "Henry Ford"]
+banks = [u'\u263B', u'\u262F', u'\u2605', u'\u2622', u'\u2665', u'\u266B', u'\u2691', u'\u2654']
 
 # failure and success colors
 fc = u"\u001b[38;5;124m"
@@ -21,7 +22,7 @@ cd = u"\u001b[0m" # default color
 cbg = ""
 
 def print_card():
-    global main, date, cvc, cbg, cd
+    global main, date, cvc, cbg, cd, banks
 
     cl = str(16 + randint(0,5) * 36 + randint(0, 20)) # magic values to make sure the colours are on the darker side
     cbg = u"\u001b[48;5;" + cl + "m" # colored background
@@ -30,7 +31,7 @@ def print_card():
     name = names[randint(0, len(names)-1)]
 
     card_front = [ctx + u'\u259F' + cd + cbg +" "*26 + cd + ctx + u'\u2599' + cd, \
-                  cbg + " "*28 + cd, \
+                  cbg + " "*24 + banks[randint(0, len(banks)-1)] + " "*3 + cd, \
                   cbg + " "*28 + cd, \
                   cbg + " "*3 + cch + " "*4 + cbg + " "*21 + cd, \
                   cbg + " "*28 + cd, \
