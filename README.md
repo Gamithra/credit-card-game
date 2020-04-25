@@ -2,7 +2,6 @@
 
 speed-memorizing credit card numbers is a very useful life skill and you should get better at it
 
-
 to play, literally just clone the repository or download *credit_cards.py*, and run
 
     python3 credit_cards.py
@@ -37,4 +36,4 @@ like, for example, 5 seconds:
 
 
 
-
+*disclaimer: it's good practice to check that the cards owner consents to this activity. consent is important*
