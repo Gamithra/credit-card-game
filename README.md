@@ -3,10 +3,10 @@
 speed-memorizing credit card numbers is a very useful life skill and you should get better at it
 
 
-to play, literally just clone the repository or download *credit_cards.py*, and run 
+to play, literally just clone the repository or download *credit_cards.py*, and run
 
     python3 credit_cards.py
-nothing else*. no dependencies. no bullshit. just one file. try it
+nothing else*. no dependencies. just one file. try it
 
 **python3 required*
 
@@ -34,6 +34,6 @@ like, for example, 5 seconds:
     python3 credit_cards.py 5
   but use something bigger than 5. you probably can't do it in 5 seconds (yet). hopefully, you soon will, with the use of this invaluable tool
 
- 
+
 
 
