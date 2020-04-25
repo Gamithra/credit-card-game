@@ -58,7 +58,7 @@ def print_card():
 
 def ask():
     global main, date, cvc, seconds
-    print(margin + "Memorize this!")
+    print(margin + "Memorize the digits!")
     print("")
 
     main = ""
