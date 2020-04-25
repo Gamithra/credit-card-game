@@ -18,7 +18,7 @@ important feature you should know about: *it also randomizes names, bank logos a
 
 ![this is the second screenshot](/images/image2.png)
 
-important feature 2 you should know about: *it also randomizes these red and green words and you're welcome to suggest words to add to the list*
+important feature 2 you should know about: *it also randomizes these red and green words and you're welcome to suggest words to add to the list, submit a pull request :-)*
 
 
 ### choose between two modes:
