@@ -12,6 +12,7 @@ nothing else*. no dependencies. just one file. try it
 
 
 ### this is what it looks like
+or should look like depending on if your terminal supports all these cool colors and unicode symbols
 ![this is the first screenshot](/images/image1.png)
 
 important feature you should know about: *it also randomizes names, bank logos and colours every time*
