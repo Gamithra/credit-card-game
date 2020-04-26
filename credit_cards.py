@@ -15,12 +15,12 @@ seconds = ""
 failure_words = ["Bollocks", "Bugger", "ffs", "Shite", "Damn", "Goddammit", "Gah", "Nope", "Boo", "Dagnabbit", "For goodness' sake", "Nuh-uh", "Nah", "Negative"]
 success_words = ["Woohooo!", "No way", "PARTY!", "Hell yeah", "Well done", "Good job", "Awww yeah", "Indeed", "Hurrah", "Whoopee", "Hooray", "You're a master", "Nice", "Awesome", "Amazing", "Keep up the good work", "Keep it up"]
 names = ["John Smith", "Gamithra M.", "Donald Trump", "Foo Bar", "Jane Doe", "David", "Karl Marx", "Abe Lincoln", "Elon Musk", "Steve Jobs", "S. Wozniak", "Willy Wonka", "Bill Gates", "Henry Ford", "Ada Lovelace",]
-banks = [u'\u263B', u'\u262F', u'\u2605', u'\u2622', u'\u2665', u'\u266B', u'\u2691', u'\u2654']
+banks = ['\u263B', '\u262F', '\u2605', '\u2622', '\u2665', '\u266B', '\u2691', '\u2654']
 
 # failure and success colors
-fc = u"\x1B[38;5;124m"
-sc = u"\x1B[38;5;76m"
-cd = u"\x1B[0m" # default color
+fc = "\x1B[38;5;124m"
+sc = "\x1B[38;5;76m"
+cd = "\x1B[0m" # default color
 cbg = ""
 
 
@@ -36,30 +36,30 @@ def print_card():
     global main, date, cvc, cbg, cd, banks
 
     cl = str(16 + random.randint(0,5) * 36 + random.randint(0, 20)) # magic values to make sure the colours are on the darker side
-    cbg = u"\x1B[48;5;" + cl + "m" # colored background
-    ctx = u"\x1B[38;5;" + cl + "m" # colored text (for the corners)
-    cch = u"\x1B[48;5;136m"
+    cbg = "\x1B[48;5;" + cl + "m" # colored background
+    ctx = "\x1B[38;5;" + cl + "m" # colored text (for the corners)
+    cch = "\x1B[48;5;136m"
 
     name, bank = random.choice(names), random.choice(banks)
 
-    card_front = [ctx + u'\u259F' + cd + cbg +" "*26 + cd + ctx + u'\u2599' + cd, \
+    card_front = [ctx + '\u259F' + cd + cbg +" "*26 + cd + ctx + '\u2599' + cd, \
                   cbg + " "*24 + bank + " "*3 + cd, \
                   cbg + " "*28 + cd, \
                   cbg + " "*3 + cch + " "*4 + cbg + " "*21 + cd, \
                   cbg + " "*28 + cd, \
                   cbg + "   "+ main + " "*(25-len(main)) + cd, \
                   cbg + "   "+ name + (14-len(name))*" " + date + "      " + cd, \
-                  ctx + u'\u259C' + cd + cbg +" "*26 + cd + ctx + u'\u259B' + cd, \
+                  ctx + '\u259C' + cd + cbg +" "*26 + cd + ctx + '\u259B' + cd, \
                   ]
 
-    card_back = [ctx + u'\u259F' + cd + cbg +" "*26 + cd + ctx + u'\u2599' + cd, \
+    card_back = [ctx + '\u259F' + cd + cbg +" "*26 + cd + ctx + '\u2599' + cd, \
                   cd + " "*28 + cd, \
                   cd + " "*28 + cd, \
                   cbg + " "*28 + cd, \
-                  cbg + " "*3 + u"\x1B[48;5;231m" + u"\x1B[38;5;16m" + " "*8 + cvc + cbg + " "*14 + cd, \
+                  cbg + " "*3 + "\x1B[48;5;231m" + "\x1B[38;5;16m" + " "*8 + cvc + cbg + " "*14 + cd, \
                   cbg + " "*28 + cd, \
                   cbg + " "*28 + cd, \
-                  ctx + u'\u259C' + cd + cbg +" "*26 + cd + ctx + u'\u259B' + cd, \
+                  ctx + '\u259C' + cd + cbg +" "*26 + cd + ctx + '\u259B' + cd, \
                   ]
 
 
@@ -182,7 +182,7 @@ def guess():
         print(margin + failure() + " It was " + date + ".")
 
     print("")
-    print(margin + u"\x1B[48;5;231m" + u"\x1B[38;5;16m" + " Score for this round: " + str(int((score_main + score_cvc + score_date)/21*100)) + "% " + cd)
+    print(margin + "\x1B[48;5;231m" + "\x1B[38;5;16m" + " Score for this round: " + str(int((score_main + score_cvc + score_date)/21*100)) + "% " + cd)
 
     print("")
     print("")
@@ -190,7 +190,7 @@ def guess():
     print(margin + "Too easy? To set a time limit, just run:\n"+margin+"'python3 credit_card.py [seconds]'!")
     print("")
 
-    print(margin + u"\x1B[38;5;22m" + "made by @gamithra" + cd)
+    print(margin + "\x1B[38;5;22m" + "made by @gamithra" + cd)
     play_again = input(margin + "Press Enter to play again - or 'q' to quit!")
     if play_again == "q":
         print(margin + "See you again soon :-)")
