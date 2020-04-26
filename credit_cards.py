@@ -35,7 +35,7 @@ def print_card():
                   cbg + " "*28 + cd, \
                   cbg + " "*3 + cch + " "*4 + cbg + " "*21 + cd, \
                   cbg + " "*28 + cd, \
-                  cbg + "   "+ main + "      " + cd, \
+                  cbg + "   "+ main + " "*(25-len(main)) + cd, \
                   cbg + "   "+ name + (14-len(name))*" " + date + "      " + cd, \
                   ctx + u'\u259C' + cd + cbg +" "*26 + cd + ctx + u'\u259B' + cd, \
                   ]
