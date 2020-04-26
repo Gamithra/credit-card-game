@@ -65,7 +65,7 @@ def luhn(digits):
     evens_sum = sum([sum(divmod(2*i, 10)) for i in digits[-1::-2]])
     sum_digits = odds_sum+evens_sum
     # because we have an odd num of digits, we just take the mod 10
-    return (10-(sum_digits % 10))
+    return (10-(sum_digits % 10)) % 10
 
 def do_checksum(pan):
     pan_digits = list(map(int,pan.replace("-","")))
