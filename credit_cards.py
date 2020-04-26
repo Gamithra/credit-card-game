@@ -29,6 +29,7 @@ def clear_screen():
         os.system('cls')
     else:
         sys.stdout.write('\x1Bc')
+        sys.stdout.flush()
 
 
 def print_card():
