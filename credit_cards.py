@@ -14,7 +14,7 @@ seconds = ""
 
 failure_words = ["Bollocks", "Bugger", "ffs", "Shite", "Damn", "Goddammit", "Gah", "Nope", "Boo", "Dagnabbit", "For goodness' sake", "Nuh-uh", "Nah", "Negative"]
 success_words = ["Woohooo!", "No way", "PARTY!", "Hell yeah", "Well done", "Good job", "Awww yeah", "Indeed", "Hurrah", "Whoopee", "Hooray", "You're a master", "Nice", "Awesome", "Amazing", "Keep up the good work", "Keep it up"]
-names = ["John Smith", "Gamithra M.", "Donald Trump", "Foo Bar", "Jane Doe", "David", "Karl Marx", "Abe Lincoln", "Elon Musk", "Steve Jobs", "S. Wozniak", "Willy Wonka", "Bill Gates", "Henry Ford"]
+names = ["John Smith", "Gamithra M.", "Donald Trump", "Foo Bar", "Jane Doe", "David", "Karl Marx", "Abe Lincoln", "Elon Musk", "Steve Jobs", "S. Wozniak", "Willy Wonka", "Bill Gates", "Henry Ford", "Ada Lovelace",]
 banks = [u'\u263B', u'\u262F', u'\u2605', u'\u2622', u'\u2665', u'\u266B', u'\u2691', u'\u2654']
 
 # failure and success colors
