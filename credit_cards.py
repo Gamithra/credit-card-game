@@ -116,8 +116,7 @@ def ask():
             time.sleep(1)
     else:
         input(margin + "Press Enter when you're done!")
-    os.system('cls' if os.name == 'nt' else "printf '\x1Bc'")
-
+    clear_screen()
 
 
 def calc_score(a, b, date=False):
