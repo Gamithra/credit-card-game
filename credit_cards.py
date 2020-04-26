@@ -56,6 +56,22 @@ def print_card():
 
     print("")
 
+def luhn(digits):
+    """
+    Calc the correct CC checksum for our random CC number.
+    input - digits - is a list of integers.
+    """
+    odds_sum = sum(digits[-2::-2])
+    evens_sum = sum([sum(divmod(2*i, 10)) for i in digits[-1::-2]])
+    sum_digits = odds_sum+evens_sum
+    # because we have an odd num of digits, we just take the mod 10
+    return (10-(sum_digits % 10))
+
+def do_checksum(pan):
+    pan_digits = list(map(int,pan.replace("-","")))
+    return pan[:-1]+str(luhn(pan_digits[:-1]))
+
+
 def ask():
     global main, date, cvc, seconds
     print(margin + "Memorize as many digits as you can!")
@@ -65,8 +81,10 @@ def ask():
 
     # add numbers that start with zero
     for i in range(4):
-        main += str(randint(1000,9999))
+        main += str(randint(1,9999)).zfill(4)
         if i < 3: main += "-"
+    # added checksum - luhn
+    main = do_checksum(main)
 
     cvc = str(randint(100, 999))
 
