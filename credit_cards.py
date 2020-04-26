@@ -23,6 +23,14 @@ sc = u"\x1B[38;5;76m"
 cd = u"\x1B[0m" # default color
 cbg = ""
 
+
+def clear_screen():
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        sys.stdout.write('\x1Bc')
+
+
 def print_card():
     global main, date, cvc, cbg, cd, banks
 
@@ -190,7 +198,7 @@ def guess():
 
 def play():
     global seconds
-    os.system('cls' if os.name == 'nt' else "printf '\x1Bc'")
+    clear_screen()
     if len(sys.argv) > 1:
         seconds = int(sys.argv[1])
     for i in range(4):
