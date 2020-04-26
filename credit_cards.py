@@ -81,7 +81,7 @@ def ask():
 
     # add numbers that start with zero
     for i in range(4):
-        main += str(randint(1000,9999))
+        main += str(randint(1,9999)).zfill(4)
         if i < 3: main += "-"
     # added checksum - luhn
     main = do_checksum(main)
