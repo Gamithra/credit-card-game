@@ -38,10 +38,11 @@ def print_card():
     cbg = u"\x1B[48;5;" + cl + "m" # colored background
     ctx = u"\x1B[38;5;" + cl + "m" # colored text (for the corners)
     cch = u"\x1B[48;5;136m"
-    name = names[random.randint(0, len(names)-1)]
+
+    name, bank = random.choice(names), random.choice(banks)
 
     card_front = [ctx + u'\u259F' + cd + cbg +" "*26 + cd + ctx + u'\u2599' + cd, \
-                  cbg + " "*24 + banks[random.randint(0, len(banks)-1)] + " "*3 + cd, \
+                  cbg + " "*24 + bank + " "*3 + cd, \
                   cbg + " "*28 + cd, \
                   cbg + " "*3 + cch + " "*4 + cbg + " "*21 + cd, \
                   cbg + " "*28 + cd, \
