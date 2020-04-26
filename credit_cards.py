@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import sys
-from random import *
+import random
 import time
 import os
 os.system('color') # apparently this makes colors work for windows users
@@ -26,14 +26,14 @@ cbg = ""
 def print_card():
     global main, date, cvc, cbg, cd, banks
 
-    cl = str(16 + randint(0,5) * 36 + randint(0, 20)) # magic values to make sure the colours are on the darker side
+    cl = str(16 + random.randint(0,5) * 36 + random.randint(0, 20)) # magic values to make sure the colours are on the darker side
     cbg = u"\u001b[48;5;" + cl + "m" # colored background
     ctx = u"\u001b[38;5;" + cl + "m" # colored text (for the corners)
     cch = u"\u001b[48;5;136m"
-    name = names[randint(0, len(names)-1)]
+    name = names[random.randint(0, len(names)-1)]
 
     card_front = [ctx + u'\u259F' + cd + cbg +" "*26 + cd + ctx + u'\u2599' + cd, \
-                  cbg + " "*24 + banks[randint(0, len(banks)-1)] + " "*3 + cd, \
+                  cbg + " "*24 + banks[random.randint(0, len(banks)-1)] + " "*3 + cd, \
                   cbg + " "*28 + cd, \
                   cbg + " "*3 + cch + " "*4 + cbg + " "*21 + cd, \
                   cbg + " "*28 + cd, \
@@ -83,17 +83,17 @@ def ask():
 
     # add numbers that start with zero
     for i in range(4):
-        main += str(randint(1,9999)).zfill(4)
+        main += str(random.randint(1,9999)).zfill(4)
         if i < 3: main += "-"
     # added checksum - luhn
     main = do_checksum(main)
 
-    cvc = str(randint(100, 999))
+    cvc = str(random.randint(100, 999))
 
-    expires_day = randint(1, 12)
+    expires_day = random.randint(1, 12)
     if expires_day < 10:
         expires_day = "0" + str(expires_day)
-    date  = str(expires_day) + "/" + str(randint(20, 28))
+    date  = str(expires_day) + "/" + str(random.randint(20, 28))
 
 
     sys.stdout.write("\r")
@@ -129,11 +129,11 @@ def calc_score(a, b, date=False):
 
 def success():
     global sc, cd
-    return sc + success_words[randint(0, len(success_words)-1)] + "!" + cd
+    return sc + success_words[random.randint(0, len(success_words)-1)] + "!" + cd
 
 def failure():
     global fc, cd
-    return fc + failure_words[randint(0, len(failure_words)-1)] + "!" + cd
+    return fc + failure_words[random.randint(0, len(failure_words)-1)] + "!" + cd
 
 def guess():
     global main, date, cvc, cbg, cd
