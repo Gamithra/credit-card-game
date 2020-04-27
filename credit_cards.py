@@ -1,5 +1,7 @@
+#!/usr/bin/env python3
+
 import sys
-from random import *
+import random
 import time
 import os
 os.system('color') # apparently this makes colors work for windows users
@@ -12,42 +14,52 @@ seconds = ""
 
 failure_words = ["Bollocks", "Bugger", "ffs", "Shite", "Damn", "Goddammit", "Gah", "Nope", "Boo", "Dagnabbit", "For goodness' sake", "Nuh-uh", "Nah", "Negative"]
 success_words = ["Woohooo!", "No way", "PARTY!", "Hell yeah", "Well done", "Good job", "Awww yeah", "Indeed", "Hurrah", "Whoopee", "Hooray", "You're a master", "Nice", "Awesome", "Amazing", "Keep up the good work", "Keep it up"]
-names = ["John Smith", "Gamithra M.", "Donald Trump", "Foo Bar", "Jane Doe", "David", "Karl Marx", "Abe Lincoln", "Elon Musk", "Steve Jobs", "S. Wozniak", "Willy Wonka", "Bill Gates", "Henry Ford"]
-banks = [u'\u263B', u'\u262F', u'\u2605', u'\u2622', u'\u2665', u'\u266B', u'\u2691', u'\u2654']
+names = ["John Smith", "Gamithra M.", "Donald Trump", "Foo Bar", "Jane Doe", "David", "Karl Marx", "Abe Lincoln", "Elon Musk", "Steve Jobs", "S. Wozniak", "Willy Wonka", "Bill Gates", "Henry Ford", "Ada Lovelace",]
+banks = ['\u263B', '\u262F', '\u2605', '\u2622', '\u2665', '\u266B', '\u2691', '\u2654']
 
 # failure and success colors
-fc = u"\u001b[38;5;124m"
-sc = u"\u001b[38;5;76m"
-cd = u"\u001b[0m" # default color
+fc = "\x1B[38;5;124m"
+sc = "\x1B[38;5;76m"
+cd = "\x1B[0m" # default color
 cbg = ""
+
+
+def clear_screen():
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        sys.stdout.write('\x1Bc')
+        sys.stdout.flush()
+
 
 def print_card():
     global main, date, cvc, cbg, cd, banks
 
-    cl = str(16 + randint(0,5) * 36 + randint(0, 20)) # magic values to make sure the colours are on the darker side
-    cbg = u"\u001b[48;5;" + cl + "m" # colored background
-    ctx = u"\u001b[38;5;" + cl + "m" # colored text (for the corners)
-    cch = u"\u001b[48;5;136m"
-    name = names[randint(0, len(names)-1)]
+    cl = str(16 + random.randint(0,5) * 36 + random.randint(0, 20)) # magic values to make sure the colours are on the darker side
+    cbg = "\x1B[48;5;" + cl + "m" # colored background
+    ctx = "\x1B[38;5;" + cl + "m" # colored text (for the corners)
+    cch = "\x1B[48;5;136m"
 
-    card_front = [ctx + u'\u259F' + cd + cbg +" "*26 + cd + ctx + u'\u2599' + cd, \
-                  cbg + " "*24 + banks[randint(0, len(banks)-1)] + " "*3 + cd, \
+    name, bank = random.choice(names), random.choice(banks)
+
+    card_front = [ctx + '\u259F' + cd + cbg +" "*26 + cd + ctx + '\u2599' + cd, \
+                  cbg + " "*24 + bank + " "*3 + cd, \
                   cbg + " "*28 + cd, \
                   cbg + " "*3 + cch + " "*4 + cbg + " "*21 + cd, \
                   cbg + " "*28 + cd, \
                   cbg + "   "+ main + " "*(25-len(main)) + cd, \
                   cbg + "   "+ name + (14-len(name))*" " + date + "      " + cd, \
-                  ctx + u'\u259C' + cd + cbg +" "*26 + cd + ctx + u'\u259B' + cd, \
+                  ctx + '\u259C' + cd + cbg +" "*26 + cd + ctx + '\u259B' + cd, \
                   ]
 
-    card_back = [ctx + u'\u259F' + cd + cbg +" "*26 + cd + ctx + u'\u2599' + cd, \
+    card_back = [ctx + '\u259F' + cd + cbg +" "*26 + cd + ctx + '\u2599' + cd, \
                   cd + " "*28 + cd, \
                   cd + " "*28 + cd, \
                   cbg + " "*28 + cd, \
-                  cbg + " "*3 + u"\u001b[48;5;231m" + u"\u001b[38;5;16m" + " "*8 + cvc + cbg + " "*14 + cd, \
+                  cbg + " "*3 + "\x1B[48;5;231m" + "\x1B[38;5;16m" + " "*8 + cvc + cbg + " "*14 + cd, \
                   cbg + " "*28 + cd, \
                   cbg + " "*28 + cd, \
-                  ctx + u'\u259C' + cd + cbg +" "*26 + cd + ctx + u'\u259B' + cd, \
+                  ctx + '\u259C' + cd + cbg +" "*26 + cd + ctx + '\u259B' + cd, \
                   ]
 
 
@@ -81,17 +93,17 @@ def ask():
 
     # add numbers that start with zero
     for i in range(4):
-        main += str(randint(1,9999)).zfill(4)
+        main += str(random.randint(1,9999)).zfill(4)
         if i < 3: main += "-"
     # added checksum - luhn
     main = do_checksum(main)
 
-    cvc = str(randint(100, 999))
+    cvc = str(random.randint(100, 999))
 
-    expires_day = randint(1, 12)
+    expires_day = random.randint(1, 12)
     if expires_day < 10:
         expires_day = "0" + str(expires_day)
-    date  = str(expires_day) + "/" + str(randint(20, 28))
+    date  = str(expires_day) + "/" + str(random.randint(20, 28))
 
 
     sys.stdout.write("\r")
@@ -104,8 +116,7 @@ def ask():
             time.sleep(1)
     else:
         input(margin + "Press Enter when you're done!")
-    os.system('cls' if os.name == 'nt' else "printf '\033c'")
-
+    clear_screen()
 
 
 def calc_score(a, b, date=False):
@@ -127,11 +138,11 @@ def calc_score(a, b, date=False):
 
 def success():
     global sc, cd
-    return sc + success_words[randint(0, len(success_words)-1)] + "!" + cd
+    return sc + success_words[random.randint(0, len(success_words)-1)] + "!" + cd
 
 def failure():
     global fc, cd
-    return fc + failure_words[randint(0, len(failure_words)-1)] + "!" + cd
+    return fc + failure_words[random.randint(0, len(failure_words)-1)] + "!" + cd
 
 def guess():
     global main, date, cvc, cbg, cd
@@ -170,7 +181,7 @@ def guess():
         print(margin + failure() + " It was " + date + ".")
 
     print("")
-    print(margin + u"\u001b[48;5;231m" + u"\u001b[38;5;16m" + " Score for this round: " + str(int((score_main + score_cvc + score_date)/21*100)) + "% " + cd)
+    print(margin + "\x1B[48;5;231m" + "\x1B[38;5;16m" + " Score for this round: " + str(int((score_main + score_cvc + score_date)/21*100)) + "% " + cd)
 
     print("")
     print("")
@@ -178,7 +189,7 @@ def guess():
     print(margin + "Too easy? To set a time limit, just run:\n"+margin+"'python3 credit_card.py [seconds]'!")
     print("")
 
-    print(margin + u"\u001b[38;5;22m" + "made by @gamithra" + cd)
+    print(margin + "\x1B[38;5;22m" + "made by @gamithra" + cd)
     play_again = input(margin + "Press Enter to play again - or 'q' to quit!")
     if play_again == "q":
         print(margin + "See you again soon :-)")
@@ -188,7 +199,7 @@ def guess():
 
 def play():
     global seconds
-    os.system('cls' if os.name == 'nt' else "printf '\033c'")
+    clear_screen()
     if len(sys.argv) > 1:
         seconds = int(sys.argv[1])
     for i in range(4):
