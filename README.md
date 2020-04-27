@@ -1,5 +1,8 @@
 ## MEMORIZE THE CREDIT CARD NUMBERS
 
+[play web version here](https://mokytis.gitlab.io/credit-card-game/) (rewritten in JS by Luke Spademan)
+
+
 speed-memorizing credit card numbers is a very useful life skill and you should get better at it
 
 to play, literally just clone the repository or download *credit_cards.py*, and run
